@@ -55,7 +55,7 @@ const InfoSection = ({menus,selectedMenu,isLoading}:infoSectionProps) => {
               {menus.map((item, index) => (
                 <div key={index} className="space-y-1">
                   <h1 className="text-2xl flex justify-between items-center pb-1 relative">
-                    <span className="">{item.name}</span>
+                    <span className="">{item.name.toUpperCase()}</span>
                     <span className="flex-1 border-b-2 border-dotted mt-5   "></span>
                     <span className="">{item.price}</span>
                   </h1>
