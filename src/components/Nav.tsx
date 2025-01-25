@@ -47,32 +47,32 @@ const Nav = () => {
       {/* Mobile Menu */}
 
       {isMenuOpen && (  
-        <div className="md:hidden fixed inset-0 bg-main-clr z-50">
+        <div className="md:hidden fixed inset-0 bg-background z-50">
           <div className="container mx-auto px-4 py-20 h-full flex flex-col items-center justify-center space-y-8">
 
           <button
               onClick={() => setIsMenuOpen(false)}
-              className="absolute top-4 right-4 text-background text-3xl"
+              className="absolute top-4 right-4 text-white text-3xl"
             >
               <X size={38} className="m-2 font-bold" />
             </button>
             <a 
               href="#"
-              className="text-3xl font-semibold text-background hover:opacity-80 transition-colors"
+              className="text-3xl font-semibold text-main-clr hover:opacity-80 transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
               Home
             </a>
             <a 
               href="#"
-              className="text-3xl font-semibold text-background hover:opacity-80 transition-colors"
+              className="text-3xl font-semibold text-main-clr hover:opacity-80 transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
               Menu
             </a>
             <a 
               href="#"
-              className="text-3xl font-semibold text-background hover:opacity-80 transition-colors"
+              className="text-3xl font-semibold text-main-clr hover:opacity-80 transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
               Contact

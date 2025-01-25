@@ -16,6 +16,7 @@ export interface Menus {
 }
 const Home = () => {
     const [selectedMenu, setSelectedMenu] = useState<string>('food');
+    const [isLoading, setIsLoading] = useState<boolean>(false);
     const [menus, setMenus] = useState<Menus[]>([]);
 
     const handleMenuChange = (menu: string) => {
@@ -25,10 +26,13 @@ const Home = () => {
     useEffect(() => {
         const fetchMenu = async () => {
             try {
+                setIsLoading(true);
                 const response = await fetchMenuByCategory(selectedMenu);
                 setMenus(response.data.response);
             } catch (error) {
                 console.log(error);
+            }finally{
+                setIsLoading(false);
             }
         } 
         fetchMenu()
@@ -39,7 +43,7 @@ const Home = () => {
         <Nav />        
         <ImgBlock />              
         <MenuBar selectedMenu={selectedMenu} handleMenuChange={handleMenuChange} /> 
-        <InfoSection menus={menus} selectedMenu={selectedMenu} />  
+        <InfoSection menus={menus} selectedMenu={selectedMenu} isLoading={isLoading} />  
         <MenuList />           
         <Footer />           
     </div>

@@ -9,10 +9,11 @@ import { Menus } from '../pages/Home'
 interface infoSectionProps {
     menus:Menus[];
     selectedMenu:string;
+    isLoading?:boolean;
 }
 
 
-const InfoSection = ({menus,selectedMenu}:infoSectionProps) => {
+const InfoSection = ({menus,selectedMenu,isLoading}:infoSectionProps) => {
   return (
     <div
       className="relative bg-cover bg-center md:h-[600px] pb-16"
@@ -28,10 +29,8 @@ const InfoSection = ({menus,selectedMenu}:infoSectionProps) => {
         style={{ backgroundImage: `url(${Frame_right})` }}
       ></div>
 
-     
       <div className="relative mx-auto max-w-5xl  text-center pt-20 md:pt-28 md:px-0 px-4 z-10">
         <div className="border p-8 relative pb-20">
-        
           <img
             src={cocktail_top}
             alt="Top Left"
@@ -43,27 +42,32 @@ const InfoSection = ({menus,selectedMenu}:infoSectionProps) => {
         [text-shadow:1.5px_1.25px_0_#800020] sm:[text-shadow:4px_3px_0_#800020]"
           >
             <span className="w-16 h-[2px] bg-shade-txt"></span>
-            {selectedMenu === 'brunch' ? 'BRUNCH COCKTAILS' : selectedMenu.toUpperCase()}
+            {selectedMenu === "brunch"
+              ? "BRUNCH COCKTAILS"
+              : selectedMenu.toUpperCase()}
             <span className="w-16 h-[2px] bg-shade-txt"></span>
           </h1>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 mt-16 gap-8">
-            {menus.map((item, index) => (
-              <div key={index} className="space-y-1">
-                <h1 className="text-2xl flex justify-between items-center pb-1 relative">
-                  <span className="">{item.name}</span>
-                  <span className="flex-1 border-b-2 border-dotted mt-5   "></span>
-                  <span className="">{item.price}</span>
-                </h1>
+          {isLoading ? (
+            <p className="flex justify-center mt-10">Loading...</p>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 mt-16 gap-8">
+              {menus.map((item, index) => (
+                <div key={index} className="space-y-1">
+                  <h1 className="text-2xl flex justify-between items-center pb-1 relative">
+                    <span className="">{item.name}</span>
+                    <span className="flex-1 border-b-2 border-dotted mt-5   "></span>
+                    <span className="">{item.price}</span>
+                  </h1>
 
-                <p className="opacity-75 text-sm md:text-lg text-left">
-                  {item.description}
-                </p>
-              </div>
-            ))}
-          </div>
+                  <p className="opacity-75 text-sm md:text-lg text-left">
+                    {item.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          )}
 
-        
           <img
             src={cocktail_bottom}
             alt="Bottom Right"
